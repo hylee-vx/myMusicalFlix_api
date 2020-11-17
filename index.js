@@ -34,7 +34,10 @@ app.get('/movies/genre/:title', (req, res) => {
     res.send('Successful GET request returning data on the genre of the movie "Singin\' In The Rain");
 });
 
-
+//gets data about a specific director by name
+app.get('/movies/directors/:name', (req, res) => {
+    res.send('Successful GET request returning data on the director "Gene Kelly"');
+});
 
 //error handling
 app.use((err, req, res, next) => {
