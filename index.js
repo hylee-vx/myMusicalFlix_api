@@ -22,9 +22,11 @@ app.get('/movies', (req, res) => {
     res.json(movies);
 });
 
-//gets list of a specific movie by title
+//gets data about a specific movie by title
 app.get('/movies/:title', (req, res) => {
-    res.send('Successful GET request returning data on the movie "Singin\' In The Rain"');
+    res.json(movies.find((movie) => {
+        return movie.title === req.params.title
+    }));
 });
 
 //gets data about a specific genre; search by genre name
