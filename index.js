@@ -10,7 +10,7 @@ app.use(express.static('public'));
 
 //GET requests
 app.get('/', (req, res) => {
-    res.send('Hello and welcome');
+    res.send('Welcome to myMusicalFlix!');
 });
 
 //error handling
