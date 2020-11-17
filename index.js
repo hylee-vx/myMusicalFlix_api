@@ -14,9 +14,14 @@ app.get('/', (req, res) => {
     res.send('Welcome to myMusicalFlix!');
 });
 
-//gets list of all movies to the user
+//gets list of all movies
 app.get('/movies', (req, res) => {
     res.send('Successful GET request returning data on all movies');
+});
+
+//gets list of specific movie by title
+app.get('/movies/:title', (req, res) => {
+    res.send('Successful GET request returning data on the movie "Singin\' In The Rain"');
 });
 
 //error handling
