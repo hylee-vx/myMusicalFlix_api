@@ -29,6 +29,11 @@ app.get('/movies/genre/:type', (req, res) => {
     res.send('Successful GET request returning data on the genre "Romantic Comedy"');
 });
 
+//gets data about a specific genre; search by movie title
+app.get('movies/genre/:title', (req, res) => {
+    res.send('Successful GET request returning data on the genre of the movie "Singin\' In The Rain");
+});
+
 //error handling
 app.use((err, req, res, next) => {
     console.error(err.stack);
