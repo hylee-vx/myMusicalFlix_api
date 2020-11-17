@@ -30,8 +30,10 @@ app.get('/movies/:title', (req, res) => {
 });
 
 //gets data about a specific genre; search by genre name
-app.get('/movies/genre/:type', (req, res) => {
-    res.send('Successful GET request returning data on the genre "Romantic Comedy"');
+app.get('/movies/:genre', (req, res) => {
+    res.json(movies.find((movie) => {
+        return movie.genre === req.params.genre
+    }));
 });
 
 //gets data about a specific genre; search by movie title
