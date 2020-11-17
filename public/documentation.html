@@ -15,6 +15,222 @@
     <p>Users will be able to sign up and update their personal info, create and update a list of favourites, and create
         a 'To Watch' list.</p>
 
+    <table>
+        <thead>
+            <tr><strong>
+                    <th>Request</th>
+                    <th>URL Endpoint</th>
+                    <th>HTTP Method</th>
+                    <th>Request Body</th>
+                    <th>Request Example</th>
+                    <th>Response Body</th>
+                    <th>Response Example</th>
+                </strong></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Get a list of all movies to the user</td>
+                <td>/movies</td>
+                <td>GET</td>
+                <td>None</td>
+                <td>N/A</td>
+                <td>JSON</td>
+                <td>
+                    {
+                    <br>title: "Singin' In The Rain",
+                    <br>releaseYear: 1952,
+                    <br>genre: "Romantic Comedy",
+                    <br>description: "A swashbuckling star of the silent movie era falls for an aspiring actress as
+                    Hollywood grapples with the advent of talking pictures.",
+                    <br>director: ["Gene Kelly", "Stanley Donen"],
+                    <br>imageURL: "https://www.imdb.com/title/tt0045152/mediaviewer/rm2462632960",
+                    <br>featured: true
+                    <br>}
+                </td>
+            </tr>
+            <tr>
+                <td>Get data about a specific movie by title</td>
+                <td>/movies/:title</td>
+                <td>GET</td>
+                <td>None</td>
+                <td>N/A</td>
+                <td>JSON</td>
+                <td>
+                    {
+                    <br>title: "Singin' In The Rain",
+                    <br>releaseYear: 1952,
+                    <br>genre: "Romantic Comedy",
+                    <br>description: "A swashbuckling star of the silent movie era falls for an aspiring actress as
+                    Hollywood grapples with the advent of talking pictures.",
+                    <br>director: ["Gene Kelly", "Stanley Donen"],
+                    <br>imageURL: "https://www.imdb.com/title/tt0045152/mediaviewer/rm2462632960",
+                    <br>featured: true
+                    <br>}
+                </td>
+            </tr>
+            <tr>
+                <td>Get data about a specific genre by genre name</td>
+                <td>/movies/genre/:type</td>
+                <td>GET</td>
+                <td>None</td>
+                <td>N/A</td>
+                <td>JSON</td>
+                <td>
+                    {
+                    <br>genre: "Romantic Comedy",
+                    <br>genreDescription: "A light, comic movie whose plot focuses on the development of a romantic
+                    relationship."
+                    <br>}
+                </td>
+            </tr>
+            <tr>
+                <td>Get data about a specific genre by movie title</td>
+                <td>/movies/genre/:title</td>
+                <td>GET</td>
+                <td>None</td>
+                <td>N/A</td>
+                <td>JSON</td>
+                <td>
+                    {
+                    <br>title: "Singin' In The Rain",
+                    <br>releaseYear: 1952,
+                    <br>imageURL: "https://www.imdb.com/title/tt0045152/mediaviewer/rm2462632960",
+                    <br>genre: "Romantic Comedy",
+                    <br>genreDescription: "A light, comic movie whose plot focuses on the development of a romantic
+                    relationship."
+                    <br>}
+                </td>
+            </tr>
+            <tr>
+                <td>Get data about a specific director by name</td>
+                <td>/movies/directors/:name</td>
+                <td>GET</td>
+                <td>None</td>
+                <td>N/A</td>
+                <td>JSON</td>
+                <td>
+                    {
+                    <br>name: "Gene Kelly",
+                    <br>imageURL: "https://www.imdb.com/name/nm0000037/mediaviewer/rm1951307776",
+                    <br>bio: "Eugene Curran Kelly was an American actor, dancer, singer, director, comedian and
+                    choreographer."
+                    <br>birthYear: 1912,
+                    <br>deathYear: 1996
+                    <br>}
+                </td>
+            </tr>
+            <tr>
+                <td>Allow a new user to register</td>
+                <td>/users</td>
+                <td>POST</td>
+                <td>JSON</td>
+                <td>
+                    {
+                    <br>username: "barbrastreisand",
+                    <br>password: "1amtheGreatestStar",
+                    <br>email: "barbra@gmail.com",
+                    <br>dateOfBirth: "24/04/1942"
+                    <br>}
+                </td>
+                <td>JSON</td>
+                <td>
+                    {
+                    <br>id: "c276e7a5-6a71-4475-96dc-e809b03721af",
+                    <br>username: "barbrastreisand",
+                    <br>password: "******************",
+                    <br>email: "barbra@gmail.com",
+                    <br>dateOfBirth: "24/04/1942",
+                    <br>favoriteMovies: []
+                    <br>}
+                </td>
+            </tr>
+            <tr>
+                <td>Get data about a specific user account</td>
+                <td>/users/:username</td>
+                <td>GET</td>
+                <td>None</td>
+                <td>N/A</td>
+                <td>JSON</td>
+                <td>
+                    {
+                    <br>id: "c276e7a5-6a71-4475-96dc-e809b03721af",
+                    <br>username: "barbrastreisand",
+                    <br>password: "******************",
+                    <br>email: "barbra@gmail.com",
+                    <br>dateOfBirth: "24/04/1942",
+                    <br>favoriteMovies: []
+                    <br>}
+                </td>
+            </tr>
+            <tr>
+                <td>Allow user to update user info</td>
+                <td>users/:username</td>
+                <td>PUT</td>
+                <td>JSON</td>
+                <td>
+                    {
+                    <br>username: "barbrastreisand",
+                    <br>password: "D0ntRain0nMyParade",
+                    <br>email: "iambarbra@gmail.com",
+                    <br>dateOfBirth: "24/04/1942"
+                    <br>}
+                </td>
+                <td>JSON</td>
+                <td>
+                    {
+                    <br>id: "c276e7a5-6a71-4475-96dc-e809b03721af",
+                    <br>username: "barbrastreisand",
+                    <br>password: "******************",
+                    <br>email: "iambarbra@gmail.com",
+                    <br>dateOfBirth: "24/04/1942",
+                    <br>favoriteMovies: []
+                    <br>}
+                </td>
+            </tr>
+            <tr>
+                <td>Allow user to add movie to list of favourites</td>
+                <td>users/:username/favorites/:movieID</td>
+                <td>POST</td>
+                <td>None</td>
+                <td>users/barbrastreisand/favorites/0d65c669-d182-44e4-b7c9-a60652e6458c</td>
+                <td>JSON</td>
+                <td>
+                    {
+                    <br>favoriteMovies: [
+                    <br>{
+                    <br>movieID: "0d65c669-d182-44e4-b7c9-a60652e6458c",
+                    <br>title: "Funny Girl",
+                    <br>releaseYear: 1968,
+                    <br>imageURL: "https://www.imdb.com/title/tt0062994/mediaviewer/rm4117314048"
+                    <br>}
+                    <br>]
+                    <br>}
+                </td>
+            </tr>
+            <tr>
+                <td>Allow user to remove movie from list of favourites</td>
+                <td>users/:username/favorites/:movie:ID</td>
+                <td>DELETE</td>
+                <td>None</td>
+                <td>users/barbrastreisand/favorites/0d65c669-d182-44e4-b7c9-a60652e6458c</td>
+                <td>JSON</td>
+                <td>
+                    {
+                    <br>favoriteMovies: []
+                    <br>}
+                </td>
+            </tr>
+            <tr>
+                <td>Allow existing user to deregister</td>
+                <td>users/:username</td>
+                <td>DELETE</td>
+                <td>None</td>
+                <td>users/barbrastreisand</td>
+                <td>Text message</td>
+                <td>"The account <strong>barbrastreisand</strong> was successfully deleted from myMusicalFlix."</td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 
 </html>
