@@ -11,6 +11,44 @@ app.use(bodyParser.json());
 //return static files
 app.use(express.static('public'));
 
+let movies = [
+    {
+        title: 'Singin\' In The Rain',
+        description: 'A swashbuckling star of the silent movie era falls for an aspiring actress as Hollywood grapples with the advent of talking pictures.',
+        genre: 'Romantic Comedy',
+        director: ['Gene Kelly', 'Stanley Donen'],
+        imageURL: 'https://www.imdb.com/title/tt0045152/mediaviewer/rm2462632960'
+    },
+    {
+        title: 'The Greatest Showman',
+        description: 'Inspired by the life of PT Barnum and Barnum\'s American Museum, a visionary rises from nothing to create a spectacle that becomes a worldwide sensation.'
+            genre: 'Biopic',
+        director: 'Michael Gracey'
+            imageURL: 'https://www.imdb.com/title/tt1485796/mediaviewer/rm956976896'
+    },
+    {
+        title: 'Funny Girl',
+        description: 'Based on the life and career of Fanny Brice, Barbra Streisand portrays her rise to fame with the Ziegfeld Follies and her stormy relationship with entrepreneur and gambler Nick Arnstein.'
+            genre: 'Biopic',
+        director: 'William Wyler',
+        imageURL: 'https://www.imdb.com/title/tt0062994/mediaviewer/rm4117314048'
+    },
+    {
+        title: 'Funny Face',
+        description: 'An impromptu fashion shoot at a bookstore brings about a new fashion model discovery in the shop clerk.',
+        genre: 'Romantic Comedy',
+        director: 'Stanley Donen',
+        imageURL: 'https://www.imdb.com/title/tt0050419/mediaviewer/rm3913898752'
+    },
+    {
+        title: 'Meet Me In St. Louis',
+        description: 'In the year leading up to the 1904 St. Louis World\'s Fair, the four Smith daughters learn lessons about life and love, even as they prepare for a reluctant move to New York.',
+        genre: 'Romantic Comedy',
+        director: 'Vincente Minnelli',
+        imageURL: 'https://www.imdb.com/title/tt0037059/mediaviewer/rm276993536'
+    }
+]
+
 //GET requests
 //welcome message on homepage
 app.get('/', (req, res) => {
