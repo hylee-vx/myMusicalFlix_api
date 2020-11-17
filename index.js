@@ -37,8 +37,18 @@ app.get('/movies/:genre', (req, res) => {
 });
 
 //gets data about a specific genre; search by movie title
-app.get('/movies/genre/:title', (req, res) => {
-    res.send('Successful GET request returning data on the genre of the movie "Singin\' In The Rain");
+app.get('/movies/:title/genre', (req, res) => {
+    let movie = movies.find((movie) => {
+        return movie.title === req.params.title
+    });
+
+    let genre = movie.genre;
+
+    if (movie) {
+        let movieSnapshot = [movie.title, movie.releaseYear, movie.imageURL];
+        let movieSnapshotGenre = movieSnapshot.concat(genre);
+        res.json(movieSnapshotGenre);
+    }
 });
 
 //gets data about a specific director by name
