@@ -101,6 +101,20 @@ app.delete('users/:username/favorites/:movieID', (req, res) => {
     res.send('Successful DELETE request removing movie "Funny Girl" from list of favourites');
 });
 
+//Allows existing user to deregister
+app.delete('users/:username', (req, res) => {
+    let user = users.find((user) => {
+        return user.username === req.params.username
+    });
+
+    if (user) {
+        users = users.filter((obj) => {
+            return obj.id !== req.params.id
+        });
+        res.status(201).send('The user account ' + req.params.username + ' was successfully deleted from myMusicalFlix.')
+    }
+});
+
 //error handling
 app.use((err, req, res, next) => {
     console.error(err.stack);
