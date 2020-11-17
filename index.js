@@ -55,6 +55,11 @@ app.post('/users', (req, res) => {
     }
 });
 
+//gets data about a specific user account
+app.get('/users/:username', (req, res) => {
+    res.send('Successful GET request returning data on the user "barbrastreisand"');
+});
+
 //error handling
 app.use((err, req, res, next) => {
     console.error(err.stack);
