@@ -111,7 +111,7 @@ app.post('/users', (req, res) => {
         const message = 'Please fill in all fields';
     } else {
         newUser.id = uuid.v4();
-        users.push(newUser);
+        //        users.push(newUser);
         res.status(201).send(newUser)
     }
 });
