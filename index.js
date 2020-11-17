@@ -53,7 +53,9 @@ app.get('/movies/:title/genre', (req, res) => {
 
 //gets data about a specific director by name
 app.get('/movies/directors/:name', (req, res) => {
-    res.send('Successful GET request returning data on the director "Gene Kelly"');
+    res.json(movies.directors.find((movie) => {
+        return movie.director.name === req.params.name
+    }));
 });
 
 //allows new user to register
