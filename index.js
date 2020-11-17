@@ -21,15 +21,15 @@ let movies = [
     },
     {
         title: 'The Greatest Showman',
-        description: 'Inspired by the life of PT Barnum and Barnum\'s American Museum, a visionary rises from nothing to create a spectacle that becomes a worldwide sensation.'
-            genre: 'Biopic',
-        director: 'Michael Gracey'
-            imageURL: 'https://www.imdb.com/title/tt1485796/mediaviewer/rm956976896'
+        description: 'Inspired by the life of PT Barnum and Barnum\'s American Museum, a visionary rises from nothing to create a spectacle that becomes a worldwide sensation.',
+        genre: 'Biopic',
+        director: 'Michael Gracey',
+        imageURL: 'https://www.imdb.com/title/tt1485796/mediaviewer/rm956976896'
     },
     {
         title: 'Funny Girl',
-        description: 'Based on the life and career of Fanny Brice, Barbra Streisand portrays her rise to fame with the Ziegfeld Follies and her stormy relationship with entrepreneur and gambler Nick Arnstein.'
-            genre: 'Biopic',
+        description: 'Based on the life and career of Fanny Brice, Barbra Streisand portrays her rise to fame with the Ziegfeld Follies and her stormy relationship with entrepreneur and gambler Nick Arnstein.',
+        genre: 'Biopic',
         director: 'William Wyler',
         imageURL: 'https://www.imdb.com/title/tt0062994/mediaviewer/rm4117314048'
     },
