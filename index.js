@@ -73,7 +73,9 @@ app.post('/users', (req, res) => {
 
 //gets data about a specific user account
 app.get('/users/:username', (req, res) => {
-    res.send('Successful GET request returning data on the user "barbrastreisand"');
+    res.json(users.find((user) => {
+        return user.username === req.params.username
+    }));
 });
 
 
