@@ -78,6 +78,18 @@ app.get('/users/:username', (req, res) => {
     }));
 });
 
+//Allows user to update user info
+app.put('/users/:username', (req, res) => {
+    //    let user = users.find((user) => {
+    //        return user.username === req.params.username
+    //    });
+
+    //can't figure out the next bit! 
+    //forEach() loop to check each property in user object?
+    //if/else statement within the loop - if new value different to what is on database, replace with new value; else keep existing value
+
+    res.send('Successful PUT request updating values for username "barbrastreisand"');
+})
 
 //error handling
 app.use((err, req, res, next) => {
