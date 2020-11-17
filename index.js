@@ -89,7 +89,12 @@ app.put('/users/:username', (req, res) => {
     //if/else statement within the loop - if new value different to what is on database, replace with new value; else keep existing value
 
     res.send('Successful PUT request updating values for username "barbrastreisand"');
-})
+});
+
+//Allows user to add movie to list of favourites
+app.post('users/:username/favorites/:movieID', (req, res) => {
+    res.send('Successful POST request adding movie to list of favourites');
+});
 
 //error handling
 app.use((err, req, res, next) => {
