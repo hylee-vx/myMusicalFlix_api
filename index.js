@@ -14,6 +14,7 @@ app.use(express.static('public'));
 let movies = [
     {
         title: 'Singin\' In The Rain',
+        releaseYear: 1952,
         description: 'A swashbuckling star of the silent movie era falls for an aspiring actress as Hollywood grapples with the advent of talking pictures.',
         genre: 'Romantic Comedy',
         director: ['Gene Kelly', 'Stanley Donen'],
@@ -21,6 +22,7 @@ let movies = [
     },
     {
         title: 'The Greatest Showman',
+        releaseYear: 2017,
         description: 'Inspired by the life of PT Barnum and Barnum\'s American Museum, a visionary rises from nothing to create a spectacle that becomes a worldwide sensation.',
         genre: 'Biopic',
         director: 'Michael Gracey',
@@ -28,6 +30,7 @@ let movies = [
     },
     {
         title: 'Funny Girl',
+        releaseYear: 1968,
         description: 'Based on the life and career of Fanny Brice, Barbra Streisand portrays her rise to fame with the Ziegfeld Follies and her stormy relationship with entrepreneur and gambler Nick Arnstein.',
         genre: 'Biopic',
         director: 'William Wyler',
@@ -35,6 +38,7 @@ let movies = [
     },
     {
         title: 'Funny Face',
+        releaseYear: 1957,
         description: 'An impromptu fashion shoot at a bookstore brings about a new fashion model discovery in the shop clerk.',
         genre: 'Romantic Comedy',
         director: 'Stanley Donen',
@@ -42,6 +46,7 @@ let movies = [
     },
     {
         title: 'Meet Me In St. Louis',
+        releaseYear: 1944,
         description: 'In the year leading up to the 1904 St. Louis World\'s Fair, the four Smith daughters learn lessons about life and love, even as they prepare for a reluctant move to New York.',
         genre: 'Romantic Comedy',
         director: 'Vincente Minnelli',
