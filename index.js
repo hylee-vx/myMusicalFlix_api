@@ -9,8 +9,14 @@ app.use(morgan('common'));
 app.use(express.static('public'));
 
 //GET requests
+//welcome message on homepage
 app.get('/', (req, res) => {
     res.send('Welcome to myMusicalFlix!');
+});
+
+//gets list of all movies to the user
+app.get('/movies', (req, res) => {
+    res.send('Successful GET request returning data on all movies');
 });
 
 //error handling
