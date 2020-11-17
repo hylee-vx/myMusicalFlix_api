@@ -74,9 +74,10 @@ app.get('/movies/:title', (req, res) => {
 
 //gets data about a specific genre; search by genre name
 app.get('/movies/:genre', (req, res) => {
-    res.json(movies.find((movie) => {
-        return movie.genre === req.params.genre
-    }));
+    //    res.json(movies.find((movie) => {
+    //        return movie.genre === req.params.genre
+    //    }));
+    res.send('Successful GET request returning data on genre "Biopic"');
 });
 
 //gets data about a specific genre; search by movie title
