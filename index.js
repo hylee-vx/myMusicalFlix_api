@@ -118,9 +118,10 @@ app.post('/users', (req, res) => {
 
 //gets data about a specific user account
 app.get('/users/:username', (req, res) => {
-    res.json(users.find((user) => {
-        return user.username === req.params.username
-    }));
+    //    res.json(users.find((user) => {
+    //        return user.username === req.params.username
+    //    }));
+    res.send('Successful GET request returning data for username "barbrastreisand"');
 });
 
 //Allows user to update user info
