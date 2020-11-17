@@ -39,6 +39,19 @@ app.get('/movies/directors/:name', (req, res) => {
     res.send('Successful GET request returning data on the director "Gene Kelly"');
 });
 
+//allows new user to register
+app.post('/users', (req, res) => {
+    let newUser = req.body;
+
+    if (!newUser.username && !newUser.password && !newUser.email) {
+        const message = 'Please fill in all fields';
+    } else {
+        newUser.id = uuid.v4();
+        users.push(newUser);
+        res.status(201).send(newUser)
+    }
+});
+
 //error handling
 app.use((err, req, res, next) => {
     console.error(err.stack);
