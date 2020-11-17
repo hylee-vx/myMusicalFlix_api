@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 
 //gets list of all movies
 app.get('/movies', (req, res) => {
-    res.send('Successful GET request returning data on all movies');
+    res.json(movies);
 });
 
 //gets list of a specific movie by title
@@ -59,6 +59,7 @@ app.post('/users', (req, res) => {
 app.get('/users/:username', (req, res) => {
     res.send('Successful GET request returning data on the user "barbrastreisand"');
 });
+
 
 //error handling
 app.use((err, req, res, next) => {
