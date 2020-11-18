@@ -78,7 +78,7 @@ app.get('/movies/:title', (req, res) => {
 });
 
 //gets data about a specific genre; search by genre name
-app.get('/movies/genre/:type', (req, res) => {
+app.get('/movies/:type/genre', (req, res) => {
     //    res.json(movies.find((movie) => {
     //        return movie.genre === req.params.genre
     //    }));
