@@ -154,16 +154,17 @@ app.delete('users/:username/favorites/:movieID', (req, res) => {
 
 //Allows existing user to deregister
 app.delete('users/:username', (req, res) => {
-    let user = users.find((user) => {
-        return user.username === req.params.username
-    });
+    //    let user = users.find((user) => {
+    //        return user.username === req.params.username
+    //    });
 
-    if (user) {
-        users = users.filter((obj) => {
-            return obj.id !== req.params.id
-        });
-        res.status(201).send('The user account ' + req.params.username + ' was successfully deleted from myMusicalFlix.')
-    }
+    //    if (user) {
+    //        users = users.filter((obj) => {
+    //            return obj.id !== req.params.id
+    //        });
+    //        res.status(201).send('The user account ' + req.params.username + ' was successfully deleted from myMusicalFlix.')
+    //    }
+    res.send('The user account "barbrastreisand" was successfully deleted from myMusicalFlix.');
 });
 
 //error handling
