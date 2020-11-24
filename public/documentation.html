@@ -120,6 +120,24 @@
                 </td>
             </tr>
             <tr>
+                <td>Get data about a specific actor by name</td>
+                <td>/movies/actors/:name</td>
+                <td>GET</td>
+                <td>None</td>
+                <td>/movies/actors/Judy%20Garland</td>
+                <td>JSON</td>
+                <td>
+                    {
+                    <br>name: "Judy Garland",
+                    <br>imageURL: "https://www.imdb.com/name/nm0000023/mediaviewer/rm1287211776/",
+                    <br>bio: "Born Frances Ethel Gumm, Judy Garland was an American actress, singer, vaudevillian and
+                    dancer."
+                    <br>birthYear: 1922,
+                    <br>deathYear: 1969
+                    <br>}
+                </td>
+            </tr>
+            <tr>
                 <td>Allow a new user to register</td>
                 <td>/users</td>
                 <td>POST</td>
