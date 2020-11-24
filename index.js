@@ -108,6 +108,11 @@ app.get('/movies/directors/:name', (req, res) => {
     res.send('Successful GET request returning data on director "Gene Kelly"');
 });
 
+//gets data about a specific actor by name
+app.get('/movies/actors/:name', (req, res) => {
+    res.send('Successful GET request returning data on actor "Judy Garland"');
+});
+
 //allows new user to register
 app.post('/users', (req, res) => {
     let newUser = req.body;
