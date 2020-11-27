@@ -11,54 +11,6 @@ app.use(bodyParser.json());
 //return static files
 app.use(express.static('public'));
 
-let movies = [
-    {
-        title: 'Singin\' In The Rain',
-        releaseYear: 1952,
-        description: 'A swashbuckling star of the silent movie era falls for an aspiring actress as Hollywood grapples with the advent of talking pictures.',
-        genre: 'Romantic Comedy',
-        director: ['Gene Kelly', 'Stanley Donen'],
-        imageURL: 'https://www.imdb.com/title/tt0045152/mediaviewer/rm2462632960',
-        id: 'ef0e32e7-394c-4aab-b8f9-9cb612b77086'
-    },
-    {
-        title: 'The Greatest Showman',
-        releaseYear: 2017,
-        description: 'Inspired by the life of PT Barnum and Barnum\'s American Museum, a visionary rises from nothing to create a spectacle that becomes a worldwide sensation.',
-        genre: 'Biopic',
-        director: 'Michael Gracey',
-        imageURL: 'https://www.imdb.com/title/tt1485796/mediaviewer/rm956976896',
-        id: 'f6301503-1b04-410c-8f8f-34ecd6c3118f'
-    },
-    {
-        title: 'Funny Girl',
-        releaseYear: 1968,
-        description: 'Based on the life and career of Fanny Brice, Barbra Streisand portrays her rise to fame with the Ziegfeld Follies and her stormy relationship with entrepreneur and gambler Nick Arnstein.',
-        genre: 'Biopic',
-        director: 'William Wyler',
-        imageURL: 'https://www.imdb.com/title/tt0062994/mediaviewer/rm4117314048',
-        id: '46b9d12b-9ef7-4985-93c0-1b93e85ad369'
-    },
-    {
-        title: 'Funny Face',
-        releaseYear: 1957,
-        description: 'An impromptu fashion shoot at a bookstore brings about a new fashion model discovery in the shop clerk.',
-        genre: 'Romantic Comedy',
-        director: 'Stanley Donen',
-        imageURL: 'https://www.imdb.com/title/tt0050419/mediaviewer/rm3913898752',
-        id: 'fa88c9b5-fc0f-4e40-9f64-663d64ff4fb6'
-    },
-    {
-        title: 'Meet Me In St. Louis',
-        releaseYear: 1944,
-        description: 'In the year leading up to the 1904 St. Louis World\'s Fair, the four Smith daughters learn lessons about life and love, even as they prepare for a reluctant move to New York.',
-        genre: 'Romantic Comedy',
-        director: 'Vincente Minnelli',
-        imageURL: 'https://www.imdb.com/title/tt0037059/mediaviewer/rm276993536',
-        id: '20b50f00-4880-418f-9deb-9deeef81e15a'
-    }
-]
-
 //GET requests
 //welcome message on homepage
 app.get('/', (req, res) => {
