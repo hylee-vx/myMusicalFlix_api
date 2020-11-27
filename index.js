@@ -40,7 +40,7 @@ app.get('/movies', (req, res) => {
 app.get('/movies/:Title', (req, res) => {
     Movies.findOne({ Title: req.params.Title })
         .then((movie) => {
-            res.json(movie);
+            res.status(201).json(movie);
         })
         .catch((err) => {
             console.error(err);
@@ -48,13 +48,8 @@ app.get('/movies/:Title', (req, res) => {
         });
 });
 
-//gets data about a specific genre; search by genre name
-app.get('/movies/:name/genre', (req, res) => {
-
-});
-
 //gets data about a specific genre; search by movie title
-app.get('/movies/:title/genre', (req, res) => {
+app.get('/movies/:Title/genre', (req, res) => {
     let movie = movies.find((movie) => {
         return movie.title === req.params.title
     });
