@@ -34,10 +34,15 @@ app.get('/movies', (req, res) => {
 });
 
 //gets data about a specific movie by title
-app.get('/movies/:title', (req, res) => {
-    res.json(movies.find((movie) => {
-        return movie.title === req.params.title
-    }));
+app.get('/movies/:Title', (req, res) => {
+    Movies.findOne({ Title: req.params.Title })
+        .then((movie) => {
+            res.json(movie);
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        });
 });
 
 //gets data about a specific genre; search by genre name
