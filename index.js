@@ -5,9 +5,12 @@ const express = require('express'),
     mongoose = require('mongoose'),
     Models = require('./models.js');
 
-const app = express();
 const Movies = Models.Movie,
     Users = Models.User;
+
+mongoose.connect('mongodb://localhost:27017/myMusicalFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
+
+const app = express();
 
 app.use(morgan('common'));
 app.use(bodyParser.json());
@@ -47,10 +50,7 @@ app.get('/movies/:Title', (req, res) => {
 
 //gets data about a specific genre; search by genre name
 app.get('/movies/:name/genre', (req, res) => {
-    //    res.json(movies.find((movie) => {
-    //        return movie.genre === req.params.genre
-    //    }));
-    res.send('Successful GET request returning data on genre "Biopic"');
+
 });
 
 //gets data about a specific genre; search by movie title
@@ -95,11 +95,15 @@ app.post('/users', (req, res) => {
 });
 
 //gets data about a specific user account
-app.get('/users/:username', (req, res) => {
-    //    res.json(users.find((user) => {
-    //        return user.username === req.params.username
-    //    }));
-    res.send('Successful GET request returning data for username "barbrastreisand"');
+app.get('/users/:Username', (req, res) => {
+    Users.findOne({ Username: req.params.Username })
+        .then((user) => {
+            res.json(user);
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        });
 });
 
 //Allows user to update user info
