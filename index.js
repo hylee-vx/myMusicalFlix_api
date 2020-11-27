@@ -50,17 +50,14 @@ app.get('/movies/:Title', (req, res) => {
 
 //gets data about a specific genre; search by movie title
 app.get('/movies/:Title/genre', (req, res) => {
-    let movie = movies.find((movie) => {
-        return movie.title === req.params.title
-    });
-
-    let genre = movie.genre;
-
-    if (movie) {
-        let movieSnapshot = [movie.title, movie.releaseYear, movie.imageURL];
-        let movieSnapshotGenre = movieSnapshot.concat(genre);
-        res.json(movieSnapshotGenre);
-    }
+    Movies.findOne({ Title: req.params.Title })
+        .then((movie) => {
+            res.status(201).json(movie.Genre.Name + ': ' + movie.Genre.Description);
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        })
 });
 
 //gets data about a specific director by name
