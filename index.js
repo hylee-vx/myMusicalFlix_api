@@ -124,41 +124,78 @@ app.get('/users/:Username', (req, res) => {
 });
 
 //Allows user to update user info
-app.put('/users/:username', (req, res) => {
-    //    let user = users.find((user) => {
-    //        return user.username === req.params.username
-    //    });
-
-    //can't figure out the next bit! 
-    //forEach() loop to check each property in user object?
-    //if/else statement within the loop - if new value different to what is on database, replace with new value; else keep existing value
-
-    res.send('Successful PUT request updating values for username "barbrastreisand"');
+app.put('/users/:Username', (req, res) => {
+    Users.findOneAndUpdate({ Username: req.params.Username },
+        {
+            $set:
+            {
+                Username: req.body.Username,
+                Password: req.body.Password,
+                Email: req.body.Email,
+                Birthdate: req.body.Birthdate
+            }
+        },
+        { new: true },
+        (err, updatedUser) => {
+            if (err) {
+                console.error(err);
+                res.status(500).send('Error: ' + err);
+            } else {
+                res.json(updatedUser);
+            }
+        });
 });
 
 //Allows user to add movie to list of favourites
-app.post('/users/:username/favorites/:movieID', (req, res) => {
-    res.send('Successful POST request adding movie "Funny Girl" to list of favourites');
+app.post('/users/:Username/Movies/:MovieID', (req, res) => {
+    Users.findOneAndUpdate({ Username: req.params.Username },
+        {
+            $push:
+                { FavouriteMovies: req.params.MovieID }
+        },
+        { new: true },
+        (err, updatedUser) => {
+            if (err) {
+                console.error(err);
+                res.status(500).send('Error: ' + err);
+            } else {
+                res.json(updatedUser);
+            }
+        });
 });
 
 //Allows user to remove movie from list of favourites
-app.delete('/users/:username/favorites/:movieID', (req, res) => {
-    res.send('Successful DELETE request removing movie "Funny Girl" from list of favourites');
+app.put('/users/:Username/Movies/:MovieID', (req, res) => {
+    Users.findOneAndUpdate({ Username: req.params.Username },
+        {
+            $pull:
+                { FavouriteMovies: req.params.MovieID }
+        },
+        { new: true },
+        (err, updatedUser) => {
+            if (err) {
+                console.error(err);
+                res.status(500).send('Error: ' + err);
+            } else {
+                res.json(updatedUser);
+            }
+        });
 });
 
 //Allows existing user to deregister
-app.delete('/users/:username', (req, res) => {
-    //    let user = users.find((user) => {
-    //        return user.username === req.params.username
-    //    });
-
-    //    if (user) {
-    //        users = users.filter((obj) => {
-    //            return obj.id !== req.params.id
-    //        });
-    //        res.status(201).send('The user account ' + req.params.username + ' was successfully deleted from myMusicalFlix.')
-    //    }
-    res.send('The user account "barbrastreisand" was successfully deleted from myMusicalFlix.');
+app.delete('/users/:Username', (req, res) => {
+    Users.findOneAndRemove({ Username: req.params.Username })
+        .then((user) => {
+            if (!user) {
+                res.status(400).send(req.params.Username + ' was not found');
+            } else {
+                res.status(200).send(req.params.Username + ' was deleted');
+            }
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        });
 });
 
 //error handling
