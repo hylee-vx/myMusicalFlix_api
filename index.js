@@ -64,7 +64,7 @@ app.get('/movies/:Title/genre', (req, res) => {
 app.get('/movies/Directors/:Name', (req, res) => {
     Movies.findOne({ 'Directors.Name': req.params.Name })
         .then((movie) => {
-            res.json(movie.Directors); //need to return only the object in the array where Director Name matches that in req.params
+            res.json(movie.Directors); //returns all data if Directors contains more than one object, even if specific director is solo in different array
         })
         .catch((err) => {
             console.error(err);
@@ -76,7 +76,7 @@ app.get('/movies/Directors/:Name', (req, res) => {
 app.get('/movies/actors/:Name', (req, res) => {
     Movies.findOne({ 'Actors.Name': req.params.Name })
         .then((movie) => {
-            res.json(movie.Actors);
+            res.json(movie.Actors); //same issue as for Directors
         })
         .catch((err) => {
             console.error(err);
