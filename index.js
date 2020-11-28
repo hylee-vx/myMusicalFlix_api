@@ -86,15 +86,29 @@ app.get('/movies/actors/:Name', (req, res) => {
 
 //allows new user to register
 app.post('/users', (req, res) => {
-    let newUser = req.body;
-
-    if (!newUser.username && !newUser.password && !newUser.email) {
-        const message = 'Please fill in all fields';
-    } else {
-        newUser.id = uuid.v4();
-        //        users.push(newUser);
-        res.status(201).send(newUser)
-    }
+    Users.findOne({ Username: req.body.Username })
+        .then((user) => {
+            if (user) {
+                return res.status(400).send(req.body.Username + ' already exists');
+            } else {
+                Users
+                    .create({
+                        Username: req.body.Username,
+                        Password: req.body.Password,
+                        Email: req.body.Email,
+                        Birthdate: req.body.Birthdate
+                    })
+                    .then((user) => { res.status(201).json(user) })
+                    .catch((err) => {
+                        console.error(err);
+                        res.status(500).send('Error: ' + err);
+                    })
+            }
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        });
 });
 
 //gets data about a specific user account
