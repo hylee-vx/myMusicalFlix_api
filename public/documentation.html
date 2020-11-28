@@ -37,103 +37,157 @@
                 <td>JSON</td>
                 <td>
                     {
-                    <br>title: "Singin' In The Rain",
-                    <br>releaseYear: 1952,
-                    <br>genre: "Romantic Comedy",
-                    <br>description: "A swashbuckling star of the silent movie era falls for an aspiring actress as
+                    <br>"Title": "Singin' In The Rain",
+                    <br>"ReleaseYear": 1952,
+                    <br>"Description": "A swashbuckling star of the silent movie era falls for an aspiring actress as
                     Hollywood grapples with the advent of talking pictures.",
-                    <br>director: ["Gene Kelly", "Stanley Donen"],
-                    <br>imageURL: "https://www.imdb.com/title/tt0045152/mediaviewer/rm2462632960",
-                    <br>featured: true
+                    <br>"Genre":
+                    <br>{
+                    <br>"Name": "Romantic Comedy",
+                    <br>"Description": "A light, comic movie whose plot focuses on the development of a romantic
+                    relationship"
+                    <br>},
+                    <br>"Directors":
+                    <br>[{
+                    <br>"Name": "Gene Kelly",
+                    <br>"Bio": "Eugene Curran Kelly was an American actor, dancer, singer, director, comedian and
+                    choreographer.",
+                    <br>"BirthYear": "1912-01-01",
+                    <br>"DeathYear": "1996-01-01",
+                    <br>"ImagePath": "genekelly.png"
+                    <br>},
+                    <br>{
+                    <br>"Name": "Stanley Donen",
+                    <br>"Bio": "Stanley Donen was an American film director and choreographer.",
+                    <br>"BirthYear": "1924-01-01",
+                    <br>"DeathYear": "2019-01-01",
+                    <br>"ImagePath": "stanleydonen.png"
+                    <br>}],
+                    <br>"Actors":
+                    <br>[{
+                    <br>"Name": "Gene Kelly",
+                    <br>"Bio": "Eugene Curran Kelly was an American actor, dancer, singer, director, comedian and
+                    choreographer.",
+                    <br>"BirthYear": "1912-01-01",
+                    <br>"DeathYear": "1996-01-01",
+                    <br>"ImagePath": "genekelly.png"
+                    <br>}],
+                    <br>"ImagePath": "singinintherain.png",
+                    <br>"Featured": true
                     <br>}
                 </td>
             </tr>
             <tr>
                 <td>Get data about a specific movie by title</td>
-                <td>/movies/:title</td>
+                <td>/movies/:Title</td>
                 <td>GET</td>
                 <td>None</td>
-                <td>/movies/Singin%20In%20The%20Rain</td>
+                <td>/movies/Singin'%20In%20The%20Rain</td>
                 <td>JSON</td>
                 <td>
                     {
-                    <br>title: "Singin' In The Rain",
-                    <br>releaseYear: 1952,
-                    <br>genre: "Romantic Comedy",
-                    <br>description: "A swashbuckling star of the silent movie era falls for an aspiring actress as
+                    <br>"Title": "Singin' In The Rain",
+                    <br>"ReleaseYear": 1952,
+                    <br>"Description": "A swashbuckling star of the silent movie era falls for an aspiring actress as
                     Hollywood grapples with the advent of talking pictures.",
-                    <br>director: ["Gene Kelly", "Stanley Donen"],
-                    <br>imageURL: "https://www.imdb.com/title/tt0045152/mediaviewer/rm2462632960",
-                    <br>featured: true
+                    <br>"Genre":
+                    <br>{
+                    <br>"Name": "Romantic Comedy",
+                    <br>"Description": "A light, comic movie whose plot focuses on the development of a romantic
+                    relationship"
+                    <br>},
+                    <br>"Directors":
+                    <br>[{
+                    <br>"Name": "Gene Kelly",
+                    <br>"Bio": "Eugene Curran Kelly was an American actor, dancer, singer, director, comedian and
+                    choreographer.",
+                    <br>"BirthYear": "1912-01-01",
+                    <br>"DeathYear": "1996-01-01",
+                    <br>"ImagePath": "genekelly.png"
+                    <br>},
+                    <br>{
+                    <br>"Name": "Stanley Donen",
+                    <br>"Bio": "Stanley Donen was an American film director and choreographer.",
+                    <br>"BirthYear": "1924-01-01",
+                    <br>"DeathYear": "2019-01-01",
+                    <br>"ImagePath": "stanleydonen.png"
+                    <br>}],
+                    <br>"Actors":
+                    <br>[{
+                    <br>"Name": "Gene Kelly",
+                    <br>"Bio": "Eugene Curran Kelly was an American actor, dancer, singer, director, comedian and
+                    choreographer.",
+                    <br>"BirthYear": "1912-01-01",
+                    <br>"DeathYear": "1996-01-01",
+                    <br>"ImagePath": "genekelly.png"
+                    <br>}],
+                    <br>"ImagePath": "singinintherain.png",
+                    <br>"Featured": true
                     <br>}
                 </td>
             </tr>
             <tr>
                 <td>Get data about a specific genre by genre name</td>
-                <td>/movies/genre/:name</td>
+                <td>/movies/genre/:Name</td>
                 <td>GET</td>
                 <td>None</td>
                 <td>/movies/Romantic%20Comedy</td>
                 <td>JSON</td>
                 <td>
                     {
-                    <br>genre: "Romantic Comedy",
-                    <br>genreDescription: "A light, comic movie whose plot focuses on the development of a romantic
-                    relationship."
+                    <br>"Name": "Romantic Comedy",
+                    <br>"Description": "A light, comic movie whose plot focuses on the development of a romantic
+                    relationship"
                     <br>}
                 </td>
             </tr>
             <tr>
                 <td>Get data about a specific genre by movie title</td>
-                <td>/movies/:title/genre</td>
+                <td>/movies/:Title/genre</td>
                 <td>GET</td>
                 <td>None</td>
-                <td>/movies/genre/Singin%20In%20The%20Rain</td>
+                <td>/movies/genre/Singin'%20In%20The%20Rain</td>
                 <td>JSON</td>
                 <td>
                     {
-                    <br>title: "Singin' In The Rain",
-                    <br>releaseYear: 1952,
-                    <br>imageURL: "https://www.imdb.com/title/tt0045152/mediaviewer/rm2462632960",
-                    <br>genre: "Romantic Comedy",
-                    <br>genreDescription: "A light, comic movie whose plot focuses on the development of a romantic
-                    relationship."
+                    <br>"Name": "Romantic Comedy",
+                    <br>"Description": "A light, comic movie whose plot focuses on the development of a romantic
+                    relationship"
                     <br>}
                 </td>
             </tr>
             <tr>
                 <td>Get data about a specific director by name</td>
-                <td>/movies/directors/:name</td>
+                <td>/movies/directors/:Name</td>
                 <td>GET</td>
                 <td>None</td>
                 <td>/movies/directors/Gene%20Kelly</td>
                 <td>JSON</td>
                 <td>
                     {
-                    <br>name: "Gene Kelly",
-                    <br>imageURL: "https://www.imdb.com/name/nm0000037/mediaviewer/rm1951307776",
-                    <br>bio: "Eugene Curran Kelly was an American actor, dancer, singer, director, comedian and
-                    choreographer."
-                    <br>birthYear: 1912,
-                    <br>deathYear: 1996
+                    <br>"Name": "Gene Kelly",
+                    <br>"Bio": "Eugene Curran Kelly was an American actor, dancer, singer, director, comedian and
+                    choreographer.",
+                    <br>"BirthYear": "1912-01-01",
+                    <br>"DeathYear": "1996-01-01",
+                    <br>"ImagePath": "genekelly.png"
                     <br>}
                 </td>
             </tr>
             <tr>
                 <td>Get data about a specific actor by name</td>
-                <td>/movies/actors/:name</td>
+                <td>/movies/actors/:Name</td>
                 <td>GET</td>
                 <td>None</td>
-                <td>/movies/actors/Judy%20Garland</td>
+                <td>/movies/actors/Audrey%20Hepburn</td>
                 <td>JSON</td>
                 <td>
                     {
-                    <br>name: "Judy Garland",
-                    <br>imageURL: "https://www.imdb.com/name/nm0000023/mediaviewer/rm1287211776/",
-                    <br>bio: "Born Frances Ethel Gumm, Judy Garland was an American actress, singer, vaudevillian and
-                    dancer."
-                    <br>birthYear: 1922,
-                    <br>deathYear: 1969
+                    <br>"Name": "Audrey Hepburn",
+                    <br>"Bio": "Audrey Hepburn was a British actress and humanitarian.",
+                    <br>"BirthYear": "1929-01-01",
+                    <br>"DeathYear": "1993-01-01",
+                    <br>"ImagePath": "audreyhepburn.png"
                     <br>}
                 </td>
             </tr>
@@ -144,108 +198,117 @@
                 <td>JSON</td>
                 <td>
                     {
-                    <br>username: "barbrastreisand",
-                    <br>password: "1amtheGreatestStar",
-                    <br>email: "barbra@gmail.com",
-                    <br>dateOfBirth: "24/04/1942"
+                    <br>"Username": "barbrastreisand",
+                    <br>"Password": "1amtheGreatestStar",
+                    <br>"Email": "barbra@gmail.com",
+                    <br>"Birthdate": "1942-04-24"
                     <br>}
                 </td>
                 <td>JSON</td>
                 <td>
                     {
-                    <br>id: "c276e7a5-6a71-4475-96dc-e809b03721af",
-                    <br>username: "barbrastreisand",
-                    <br>password: "******************",
-                    <br>email: "barbra@gmail.com",
-                    <br>dateOfBirth: "24/04/1942",
-                    <br>favoriteMovies: []
+                    <br>"FavouriteMovies": []
+                    <br>"_id": "5fc2cda536097902b78359d9",
+                    <br>"Username": "barbrastreisand",
+                    <br>"Password": "1amtheGreatestStar",
+                    <br>"Email": "barbra@gmail.com",
+                    <br>"Birthdate": "1942-04-24T00:00:00.000Z",
                     <br>}
                 </td>
             </tr>
             <tr>
                 <td>Get data about a specific user account</td>
-                <td>/users/:username</td>
+                <td>/users/:Username</td>
                 <td>GET</td>
                 <td>None</td>
-                <td>/users/barbrastreisand</td>
+                <td>/users/davidbaddiel</td>
                 <td>JSON</td>
                 <td>
                     {
-                    <br>id: "c276e7a5-6a71-4475-96dc-e809b03721af",
-                    <br>username: "barbrastreisand",
-                    <br>password: "******************",
-                    <br>email: "barbra@gmail.com",
-                    <br>dateOfBirth: "24/04/1942",
-                    <br>favoriteMovies: []
-                    <br>}
+                    <br>"FavouriteMovies": [
+                    <br>"5fbbebaffe1b8ca810af68cc",
+                    <br>"5fbbc15efe1b8ca810af68c9"
+                    <br>],
+                    <br>"_id": "5fbcebd5fe1b8ca810af68d5",
+                    <br>"Username": "davidbaddiel",
+                    <br>"Password": "ThatsY0uThat1s",
+                    <br>"Email": "davidbaddiel@gmail.com",
+                    <br>"Birthdate": "1988-12-17T00:00:00.000Z"
+                    }
                 </td>
             </tr>
             <tr>
                 <td>Allow user to update user info</td>
-                <td>users/:username</td>
+                <td>users/:Username</td>
                 <td>PUT</td>
                 <td>JSON</td>
                 <td>
                     {
-                    <br>username: "barbrastreisand",
-                    <br>password: "D0ntRain0nMyParade",
-                    <br>email: "iambarbra@gmail.com",
-                    <br>dateOfBirth: "24/04/1942"
+                    <br>"FavouriteMovies": [],
+                    <br>"Username": "barbrastreisand",
+                    <br>"Password": "D0ntra1nonmyparaaaaaade",
+                    <br>"Email": "barbra@gmail.com",
+                    <br>"1942-04-24"
                     <br>}
                 </td>
                 <td>JSON</td>
                 <td>
                     {
-                    <br>id: "c276e7a5-6a71-4475-96dc-e809b03721af",
-                    <br>username: "barbrastreisand",
-                    <br>password: "******************",
-                    <br>email: "iambarbra@gmail.com",
-                    <br>dateOfBirth: "24/04/1942",
-                    <br>favoriteMovies: []
+                    <br>"FavouriteMovies": [],
+                    <br>"_id": "5fc2cda536097902b78359d9",
+                    <br>"Username": "barbrastreisand",
+                    <br>"Password": "D0ntra1nonmyparaaaaaade",
+                    <br>"Email": "barbra@gmail.com",
+                    <br>"Birthdate": "1942-04-24T00:00:00.000Z",
                     <br>}
                 </td>
             </tr>
             <tr>
                 <td>Allow user to add movie to list of favourites</td>
-                <td>users/:username/favorites/:movieID</td>
+                <td>users/:Username/Movies/:MovieID</td>
                 <td>POST</td>
                 <td>None</td>
-                <td>users/barbrastreisand/favorites/0d65c669-d182-44e4-b7c9-a60652e6458c</td>
+                <td>users/barbrastreisand/Movies/5fbce024fe1b8ca810af68d0</td>
                 <td>JSON</td>
                 <td>
                     {
-                    <br>favoriteMovies: [
-                    <br>{
-                    <br>movieID: "0d65c669-d182-44e4-b7c9-a60652e6458c",
-                    <br>title: "Funny Girl",
-                    <br>releaseYear: 1968,
-                    <br>imageURL: "https://www.imdb.com/title/tt0062994/mediaviewer/rm4117314048"
-                    <br>}
-                    <br>]
+                    <br>"FavouriteMovies": [
+                    <br>"5fbce024fe1b8ca810af68d0"
+                    <br>],
+                    <br>"_id": "5fc2cda536097902b78359d9",
+                    <br>"Username": "barbrastreisand",
+                    <br>"Password": "D0ntra1nonmyparaaaaaade",
+                    <br>"Email": "barbra@gmail.com",
+                    <br>"Birthdate": "1942-04-24T00:00:00.000Z",
                     <br>}
                 </td>
             </tr>
             <tr>
                 <td>Allow user to remove movie from list of favourites</td>
-                <td>users/:username/favorites/:movie:ID</td>
+                <td>users/:Username/Movies/:Movie:ID</td>
                 <td>DELETE</td>
                 <td>None</td>
-                <td>users/barbrastreisand/favorites/0d65c669-d182-44e4-b7c9-a60652e6458c</td>
+                <td>users/barbrastreisand/Movies/5fbce024fe1b8ca810af68d0</td>
                 <td>JSON</td>
                 <td>
                     {
-                    <br>favoriteMovies: []
+                    <br>"FavouriteMovies": [],
+                    <br>"_id": "5fc2cda536097902b78359d9",
+                    <br>"Username": "barbrastreisand",
+                    <br>"Password": "D0ntra1nonmyparaaaaaade",
+                    <br>"Email": "barbra@gmail.com",
+                    <br>"Birthdate": "1942-04-24T00:00:00.000Z",
                     <br>}
                 </td>
             </tr>
             <tr>
                 <td>Allow existing user to deregister</td>
-                <td>users/:username</td>
+                <td>users/:Username</td>
                 <td>DELETE</td>
                 <td>None</td>
                 <td>users/barbrastreisand</td>
                 <td>Text message</td>
-                <td>"The account <strong>barbrastreisand</strong> was successfully deleted from myMusicalFlix."</td>
+                <td>"barbrastreisand was deleted"</td>
             </tr>
         </tbody>
     </table>
