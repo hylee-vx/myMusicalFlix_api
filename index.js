@@ -48,11 +48,24 @@ app.get('/movies/:Title', (req, res) => {
         });
 });
 
+//gets data about a specific genre by genre name
+app.get('/movies/genre/:Name', (req, res) => {
+    Movies.findOne({ 'Genre.Name': req.params.Name })
+        .then((movie) => {
+            res.json(movie.Genre);
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        });
+});
+
+
 //gets data about a specific genre; search by movie title
 app.get('/movies/:Title/genre', (req, res) => {
     Movies.findOne({ Title: req.params.Title })
         .then((movie) => {
-            res.json(movie.Genre.Name + ': ' + movie.Genre.Description);
+            res.json(movie.Genre);
         })
         .catch((err) => {
             console.error(err);
