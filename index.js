@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
 app.get('/movies', (req, res) => {
     Movies.find()
         .then((movies) => {
-            res.status(201).json(movies);
+            res.json(movies);
         })
         .catch((err) => {
             console.error(err);
@@ -40,7 +40,7 @@ app.get('/movies', (req, res) => {
 app.get('/movies/:Title', (req, res) => {
     Movies.findOne({ Title: req.params.Title })
         .then((movie) => {
-            res.status(201).json(movie);
+            res.json(movie);
         })
         .catch((err) => {
             console.error(err);
@@ -52,7 +52,7 @@ app.get('/movies/:Title', (req, res) => {
 app.get('/movies/:Title/genre', (req, res) => {
     Movies.findOne({ Title: req.params.Title })
         .then((movie) => {
-            res.status(201).json(movie.Genre.Name + ': ' + movie.Genre.Description);
+            res.json(movie.Genre.Name + ': ' + movie.Genre.Description);
         })
         .catch((err) => {
             console.error(err);
@@ -61,11 +61,15 @@ app.get('/movies/:Title/genre', (req, res) => {
 });
 
 //gets data about a specific director by name
-app.get('/movies/directors/:name', (req, res) => {
-    //    res.json(movies.directors.find((movie) => {
-    //        return movie.director.name === req.params.name
-    //    }));
-    res.send('Successful GET request returning data on director "Gene Kelly"');
+app.get('/movies/Directors/:Name', (req, res) => {
+    Movies.findOne({ 'Directors.Name': req.params.Name })
+        .then((movie) => {
+            res.json(movie.Directors) //need to return only the object in the array where Director Name matches that in req.params
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        });
 });
 
 //gets data about a specific actor by name
