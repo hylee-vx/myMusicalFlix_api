@@ -64,7 +64,7 @@ app.get('/movies/:Title/genre', (req, res) => {
 app.get('/movies/Directors/:Name', (req, res) => {
     Movies.findOne({ 'Directors.Name': req.params.Name })
         .then((movie) => {
-            res.json(movie.Directors) //need to return only the object in the array where Director Name matches that in req.params
+            res.json(movie.Directors); //need to return only the object in the array where Director Name matches that in req.params
         })
         .catch((err) => {
             console.error(err);
@@ -73,8 +73,15 @@ app.get('/movies/Directors/:Name', (req, res) => {
 });
 
 //gets data about a specific actor by name
-app.get('/movies/actors/:name', (req, res) => {
-    res.send('Successful GET request returning data on actor "Judy Garland"');
+app.get('/movies/actors/:Name', (req, res) => {
+    Movies.findOne({ 'Actors.Name': req.params.Name })
+        .then((movie) => {
+            res.json(movie.Actors);
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        });
 });
 
 //allows new user to register
