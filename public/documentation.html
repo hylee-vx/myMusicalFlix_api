@@ -199,7 +199,7 @@
                 <td>
                     {
                     <br>"Username": "barbrastreisand",
-                    <br>"Password": "1amtheGreatestStar",
+                    <br>"Password": "IAmTheGreatestStar",
                     <br>"Email": "barbra@gmail.com",
                     <br>"Birthdate": "1942-04-24"
                     <br>}
@@ -210,13 +210,41 @@
                     <br>"FavouriteMovies": []
                     <br>"_id": "5fc2cda536097902b78359d9",
                     <br>"Username": "barbrastreisand",
-                    <br>"Password": "1amtheGreatestStar",
+                    <br>"Password": "IAmTheGreatestStar",
                     <br>"Email": "barbra@gmail.com",
                     <br>"Birthdate": "1942-04-24T00:00:00.000Z",
                     <br>}
                 </td>
             </tr>
             <tr>
+                <td>Allow registered user to login</td>
+                <td>/login</td>
+                <td>POST</td>
+                <td>JSON</td>
+                <td>
+                    {
+                    <br>"Username": "barbrastreisand",
+                    <br>"Password": "IAmTheGreatestStar",
+                    <br>}
+                </td>
+                <td>JSON</td>
+                <td>
+                    {
+                    <br>"user": {
+                    <br>"FavouriteMovies": []
+                    <br>"_id": "5fc2cda536097902b78359d9",
+                    <br>"Username": "barbrastreisand",
+                    <br>"Password": "IAmTheGreatestStar",
+                    <br>"Email": "barbra@gmail.com",
+                    <br>"Birthdate": "1942-04-24T00:00:00.000Z",
+                    <br>},
+                    <br>"token":
+                    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGYXZvdXJpdGVNb3ZpZXMiOltdLCJfaWQiOiI1ZmM2YzVmMjY5ZDQwMzAzNzU2MjVmZTMiLCJVc2VybmFtZSI6ImJhcmJyYXN0cmVpc2FuZCIsIlBhc3N3b3JkIjoiMUFtVGhlR3JlYXRlc3RTdGFyIiwiRW1haWwiOiJiYXJicmFAZ21haWwuY29tIiwiQmlydGhkYXRlIjoiMTk0Mi0wNC0yNFQwMDowMDowMC4wMDBaIiwiX192IjowLCJpYXQiOjE2MDY4NjI0NjgsImV4cCI6MTYwNzQ2NzI2OCwic3ViIjoiYmFyYnJhc3RyZWlzYW5kIn0.b2WoiLtYtzZ8fCRj4F2mRrOIlmfqt7zHfP9LVWKdl0A"
+                    <br>}
+                </td>
+            </tr>
+            <!-- need separate JWT to limit access to user's own account only
+                <tr>
                 <td>Get data about a specific user account</td>
                 <td>/users/:Username</td>
                 <td>GET</td>
@@ -236,7 +264,7 @@
                     <br>"Birthdate": "1988-12-17T00:00:00.000Z"
                     }
                 </td>
-            </tr>
+            </tr> -->
             <tr>
                 <td>Allow user to update user info</td>
                 <td>users/:Username</td>
@@ -245,8 +273,8 @@
                 <td>
                     {
                     <br>"FavouriteMovies": [],
-                    <br>"Username": "barbrastreisand",
-                    <br>"Password": "D0ntra1nonmyparaaaaaade",
+                    <br>"Username": "THEbarbrastreisand",
+                    <br>"Password": "DontRainOnMyParaaaaaade",
                     <br>"Email": "barbra@gmail.com",
                     <br>"1942-04-24"
                     <br>}
@@ -256,8 +284,8 @@
                     {
                     <br>"FavouriteMovies": [],
                     <br>"_id": "5fc2cda536097902b78359d9",
-                    <br>"Username": "barbrastreisand",
-                    <br>"Password": "D0ntra1nonmyparaaaaaade",
+                    <br>"Username": "THEbarbrastreisand",
+                    <br>"Password": "DontRainOnMyParaaaaaade",
                     <br>"Email": "barbra@gmail.com",
                     <br>"Birthdate": "1942-04-24T00:00:00.000Z",
                     <br>}
@@ -276,8 +304,8 @@
                     <br>"5fbce024fe1b8ca810af68d0"
                     <br>],
                     <br>"_id": "5fc2cda536097902b78359d9",
-                    <br>"Username": "barbrastreisand",
-                    <br>"Password": "D0ntra1nonmyparaaaaaade",
+                    <br>"Username": "THEbarbrastreisand",
+                    <br>"Password": "DontRainOnMyParaaaaaade",
                     <br>"Email": "barbra@gmail.com",
                     <br>"Birthdate": "1942-04-24T00:00:00.000Z",
                     <br>}
@@ -294,8 +322,8 @@
                     {
                     <br>"FavouriteMovies": [],
                     <br>"_id": "5fc2cda536097902b78359d9",
-                    <br>"Username": "barbrastreisand",
-                    <br>"Password": "D0ntra1nonmyparaaaaaade",
+                    <br>"Username": "THEbarbrastreisand",
+                    <br>"Password": "DontRainOnMyParaaaaaade,
                     <br>"Email": "barbra@gmail.com",
                     <br>"Birthdate": "1942-04-24T00:00:00.000Z",
                     <br>}
@@ -306,9 +334,9 @@
                 <td>users/:Username</td>
                 <td>DELETE</td>
                 <td>None</td>
-                <td>users/barbrastreisand</td>
+                <td>users/THEbarbrastreisand</td>
                 <td>Text message</td>
-                <td>"barbrastreisand was deleted"</td>
+                <td>"THEbarbrastreisand was deleted"</td>
             </tr>
         </tbody>
     </table>

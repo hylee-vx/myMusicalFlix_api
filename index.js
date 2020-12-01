@@ -134,17 +134,18 @@ app.post('/users', (req, res) => {
         });
 });
 
-//gets data about a specific user account
-app.get('/users/:Username', passport.authenticate('jwt', { session: false }), (req, res) => {
-    Users.findOne({ Username: req.params.Username })
-        .then((user) => {
-            res.json(user);
-        })
-        .catch((err) => {
-            console.error(err);
-            res.status(500).send('Error: ' + err);
-        });
-});
+// //gets data about a specific user account
+// //needs separate JWT to ensure users only have access to their own account
+// app.get('/users/:Username', passport.authenticate('jwt', { session: false }), (req, res) => {
+//     Users.findOne({ Username: req.params.Username })
+//         .then((user) => {
+//             res.json(user);
+//         })
+//         .catch((err) => {
+//             console.error(err);
+//             res.status(500).send('Error: ' + err);
+//         });
+// });
 
 //Allows user to update user info
 app.put('/users/:Username', passport.authenticate('jwt', { session: false }), (req, res) => {
