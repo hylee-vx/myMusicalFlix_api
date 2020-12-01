@@ -3,7 +3,10 @@ const express = require('express'),
     bodyParser = require('body-parser'),
     uuid = require('uuid'),
     mongoose = require('mongoose'),
-    Models = require('./models.js');
+    Models = require('./models.js'),
+    passport = require('passport');
+
+require('./passport');
 
 const Movies = Models.Movie,
     Users = Models.User;
@@ -14,6 +17,9 @@ const app = express();
 
 app.use(morgan('common'));
 app.use(bodyParser.json());
+
+//app argument ensures Express is available in auth.js file
+let auth = require('./auth')(app);
 
 //return static files
 app.use(express.static('public'));
