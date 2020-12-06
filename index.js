@@ -7,6 +7,8 @@ const express = require("express"),
   passport = require("passport"),
   cors = require("cors");
 
+const { check, validationResult } = require("express-validator");
+
 require("./passport");
 
 const Movies = Models.Movie,
@@ -138,33 +140,53 @@ app.get(
 );
 
 //allows new user to register
-app.post("/users", (req, res) => {
-  let hashedPassword = Users.hashPassword(req.body.Password);
-  Users.findOne({ Username: req.body.Username })
-    .then((user) => {
-      if (user) {
-        return res.status(400).send(req.body.Username + " already exists");
-      } else {
-        Users.create({
-          Username: req.body.Username,
-          Password: hashedPassword,
-          Email: req.body.Email,
-          Birthdate: req.body.Birthdate,
-        })
-          .then((user) => {
-            res.status(201).json(user);
+app.post(
+  "/users",
+  //validation logic for request
+  [
+    check("Username", "Username is required").isLength({ min: 5 }),
+    check(
+      "Username",
+      "Username can only contain letters or numbers"
+    ).isAlphanumeric(),
+    check("Password", "Password is required").not().isEmpty(),
+    check("Email", "Email does not appear to be valid").isEmail(),
+  ],
+  (req, res) => {
+    //checks validation object for errors
+    let errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
+
+    let hashedPassword = Users.hashPassword(req.body.Password);
+    Users.findOne({ Username: req.body.Username })
+      .then((user) => {
+        if (user) {
+          return res.status(400).send(req.body.Username + " already exists");
+        } else {
+          Users.create({
+            Username: req.body.Username,
+            Password: hashedPassword,
+            Email: req.body.Email,
+            Birthdate: req.body.Birthdate,
           })
-          .catch((err) => {
-            console.error(err);
-            res.status(500).send("Error: " + err);
-          });
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send("Error: " + err);
-    });
-});
+            .then((user) => {
+              res.status(201).json(user);
+            })
+            .catch((err) => {
+              console.error(err);
+              res.status(500).send("Error: " + err);
+            });
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500).send("Error: " + err);
+      });
+  }
+);
 
 // //gets data about a specific user account
 // //needs separate JWT to ensure users only have access to their own account
