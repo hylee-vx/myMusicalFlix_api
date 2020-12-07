@@ -14,11 +14,11 @@ require('./passport');
 const Movies = Models.Movie,
   Users = Models.User;
 
-//connect to local host database
-mongoose.connect('mongodb://localhost:27017/myMusicalFlixDB', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+// //connect to local host database
+// mongoose.connect('mongodb://localhost:27017/myMusicalFlixDB', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 
 //connect to MongoDB Atlas database
 mongoose.connect(process.env.CONNECTION_URI, {
