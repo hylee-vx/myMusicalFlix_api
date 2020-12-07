@@ -144,7 +144,7 @@ app.post(
   '/users',
   //validation logic for request
   [
-    check('Username', 'Username is required').not.isEmpty(),
+    check('Username', 'Username is required').not().isEmpty(),
     check('Username', 'Username must be at least 5 characters').isLength({
       min: 5,
     }),
@@ -154,7 +154,7 @@ app.post(
     ).isAlphanumeric(),
     check('Password', 'Password is required').not().isEmpty(),
     check('Password', 'Password must be at least 8 characters').isLength({
-      min: 5,
+      min: 8,
     }),
     check('Email', 'Email does not appear to be valid').isEmail(),
   ],
@@ -213,7 +213,7 @@ app.put(
   passport.authenticate('jwt', { session: false }),
   //validation logic for request
   [
-    check('Username', 'Username is required').not.isEmpty(),
+    check('Username', 'Username is required').not().isEmpty(),
     check('Username', 'Username must be at least 5 characters').isLength({
       min: 5,
     }),
