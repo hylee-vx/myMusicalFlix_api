@@ -33,7 +33,7 @@ app.use(express.static('public'));
 
 //GET requests
 //welcome message on homepage
-app.get('/', passport.authenticate('jwt', { session: false }), (req, res) => {
+app.get('/', (req, res) => {
   res.send('Welcome to myMusicalFlix!');
 });
 
@@ -330,7 +330,7 @@ app.use((err, req, res, next) => {
   res.status(500).send('Something broke');
 });
 
-//listen for requests via environment variable
+//listen for requests via environment variables
 const port = process.env.PORT || 8080;
 app.listen(port, '0.0.0.0', () => {
   console.log('Listening on Port ' + port);
