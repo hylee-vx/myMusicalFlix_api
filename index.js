@@ -9,31 +9,40 @@ const express = require('express'),
 
 const { check, validationResult } = require('express-validator');
 
-require('./passport');
+require('./auth');
+
+const jwtSecret = 'your_jwt_secret'; //must be same key used in JWTStrategy in passport.js
+
+const jwt = require('jsonwebtoken');
+
+let generateJWTToken = (user) => {
+    return jwt.sign(user, jwtSecret, {
+        subject: user.Username, //username encoded in JWT
+        expiresIn: '7d', //token expires in 7 days
+        algorithm: 'HS256' //algorithm used to 'sign'/encode values of the JWT
+    });
+}
 
 const Movies = Models.Movie,
   Users = Models.User;
 
-// //connect to local host database
-// mongoose.connect('mongodb://localhost:27017/myMusicalFlixDB', {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
-
-//connect to MongoDB Atlas database
-mongoose.connect(process.env.CONNECTION_URI, {
+//connect to local host database
+mongoose.connect('***REMOVED***', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
+//connect to MongoDB Atlas database
+// mongoose.connect(process.env.CONNECTION_URI, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 
 const app = express();
 
 app.use(morgan('common'));
 app.use(bodyParser.json());
 app.use(cors()); //allows requests from all origins
-
-//app argument ensures Express is available in auth.js file
-let auth = require('./auth')(app);
 
 //return static files
 app.use(express.static('public'));
@@ -42,6 +51,24 @@ app.use(express.static('public'));
 //welcome message on homepage
 app.get('/', (req, res) => {
   res.send('Welcome to myMusicalFlix!');
+});
+
+app.post('/login', (req, res) => {
+  passport.authenticate('local', { session: false }, (error, user, info) => {
+    if (error || !user) {
+      return res.status(400).json({
+        message: 'Something is not right',
+        user: user
+      });
+    }
+    req.login(user, { session: false }, (error) => {
+      if (error) {
+        res.send(error);
+      }
+      let token = generateJWTToken(user.toJSON());
+      return res.json({ user, token });
+    });
+  })(req, res);
 });
 
 //gets list of all movies
