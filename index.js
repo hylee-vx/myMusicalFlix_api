@@ -26,17 +26,11 @@ let generateJWTToken = (user) => {
 const Movies = Models.Movie,
   Users = Models.User;
 
-//connect to local host database
-mongoose.connect('***REMOVED***', {
+// connect to MongoDB Atlas database
+mongoose.connect(process.env.CONNECTION_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-
-//connect to MongoDB Atlas database
-// mongoose.connect(process.env.CONNECTION_URI, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
 
 const app = express();
 
