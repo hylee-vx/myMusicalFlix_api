@@ -16,11 +16,11 @@ const jwtSecret = 'your_jwt_secret'; //must be same key used in JWTStrategy in p
 const jwt = require('jsonwebtoken');
 
 let generateJWTToken = (user) => {
-    return jwt.sign(user, jwtSecret, {
-        subject: user.Username, //username encoded in JWT
-        expiresIn: '7d', //token expires in 7 days
-        algorithm: 'HS256' //algorithm used to 'sign'/encode values of the JWT
-    });
+  return jwt.sign(user, jwtSecret, {
+    subject: user.Username, //username encoded in JWT
+    expiresIn: '7d', //token expires in 7 days
+    algorithm: 'HS256' //algorithm used to 'sign'/encode values of the JWT
+  });
 }
 
 const Movies = Models.Movie,
@@ -31,6 +31,11 @@ mongoose.connect(process.env.CONNECTION_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
+// mongoose.connect('mongodb://localhost:27017/myMusicalFlixDB', {	// mongoose.connect('mongodb://localhost:27017/myMusicalFlixDB', {
+//   useNewUrlParser: true,	//   useNewUrlParser: true,
+//   useUnifiedTopology: true,	//   useUnifiedTopology: true,
+// });
 
 const app = express();
 
@@ -67,9 +72,7 @@ app.post('/login', (req, res) => {
 
 //gets list of all movies
 app.get(
-  '/movies',
-  passport.authenticate('jwt', { session: false }),
-  (req, res) => {
+  '/movies', (req, res) => {
     Movies.find()
       .then(movies => {
         res.json(movies);
