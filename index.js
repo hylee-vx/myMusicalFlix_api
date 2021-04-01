@@ -227,10 +227,10 @@ app.post(
 
 //gets data about a specific user account
 app.get(
-  '/users/:Username',
+  '/users/:ID',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    Users.findOne({ Username: req.params.Username })
+    Users.findOne({ _id: req.params.ID })
       .then((user) => {
         res.json(user);
       })
@@ -240,9 +240,9 @@ app.get(
       });
   });
 
-//Allows user to update user info
+//Allows user to update user info except password
 app.put(
-  '/users/:Username',
+  '/users/:ID',
   passport.authenticate('jwt', { session: false }),
   //validation logic for request
   [
@@ -254,10 +254,6 @@ app.put(
       'Username',
       'Username can only contain letters or numbers'
     ).isAlphanumeric(),
-    check('Password', 'Password is required').not().isEmpty(),
-    check('Password', 'Password must be at least 8 characters').isLength({
-      min: 8,
-    }),
     check('Email', 'Email does not appear to be valid').isEmail(),
   ],
   (req, res) => {
@@ -268,13 +264,12 @@ app.put(
       return res.status(422).json({ errors: errors.array() });
     }
 
-    let hashedPassword = Users.hashPassword(req.body.Password);
     Users.findOneAndUpdate(
-      { Username: req.params.Username },
+      { _id: req.params.ID },
       {
         $set: {
           Username: req.body.Username,
-          Password: hashedPassword,
+          // Password: hashedPassword,
           Email: req.body.Email,
           DateOfBirth: req.body.DateOfBirth,
         },
@@ -292,13 +287,51 @@ app.put(
   }
 );
 
+// Allows user to update password
+app.put(
+  '/users/:ID/password',
+  passport.authenticate('jwt', { session: false }),
+  [
+    check('Password', 'Password is required').not().isEmpty(),
+    check('Password', 'Password must be at least 8 characters').isLength({
+      min: 8,
+    })
+  ],
+  (req, res) => {
+    let errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
+
+    let hashedPassword = Users.hashPassword(req.body.Password);
+    Users.findOneAndUpdate(
+      { _id: req.params.ID },
+      {
+        $set: {
+          Password: hashedPassword
+        },
+      },
+      { new: true },
+      (err, updatedPassword) => {
+        if (err) {
+          console.log(err);
+          res.status(500).send('Error: ' + err);
+        } else {
+          res.json(updatedPassword);
+        }
+      }
+    );
+  }
+);
+
 //Allows user to add movie to list of favourites
 app.post(
-  '/users/:Username/Movies/:MovieID',
+  '/users/:ID/Movies/:MovieID',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     Users.findOneAndUpdate(
-      { Username: req.params.Username },
+      { _id: req.params.ID },
       {
         $push: { FavouriteMovies: req.params.MovieID },
       },
@@ -317,11 +350,11 @@ app.post(
 
 //Allows user to remove movie from list of favourites
 app.put(
-  '/users/:Username/Movies/:MovieID',
+  '/users/:ID/Movies/:MovieID',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     Users.findOneAndUpdate(
-      { Username: req.params.Username },
+      { _id: req.params.ID },
       {
         $pull: { FavouriteMovies: req.params.MovieID },
       },
@@ -340,15 +373,15 @@ app.put(
 
 //Allows existing user to deregister
 app.delete(
-  '/users/:Username',
+  '/users/:ID',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    Users.findOneAndRemove({ Username: req.params.Username })
+    Users.findOneAndRemove({ _id: req.params.ID })
       .then(user => {
         if (!user) {
-          res.status(400).send(req.params.Username + ' was not found');
+          res.status(400).send(req.params.ID + ' was not found');
         } else {
-          res.status(200).send(req.params.Username + ' was deleted');
+          res.status(200).send(req.params.ID + ' was deleted');
         }
       })
       .catch(err => {
