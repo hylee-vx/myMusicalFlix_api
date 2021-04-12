@@ -373,7 +373,7 @@ app.put(
 
 //Allows existing user to deregister
 app.delete(
-  '/users/:ID',
+  '/users/:ID/delete',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     Users.findOneAndRemove({ _id: req.params.ID })
