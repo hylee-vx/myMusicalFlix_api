@@ -142,21 +142,6 @@
                 </td>
             </tr>
             <tr>
-                <td>Get data about a specific genre by movie title</td>
-                <td>/movies/:Title/genre</td>
-                <td>GET</td>
-                <td>None</td>
-                <td>/movies/genre/Singin'%20In%20The%20Rain</td>
-                <td>JSON</td>
-                <td>
-                    {
-                    <br>"Name": "Romantic Comedy",
-                    <br>"Description": "A light, comic movie whose plot focuses on the development of a romantic
-                    relationship"
-                    <br>}
-                </td>
-            </tr>
-            <tr>
                 <td>Get data about a specific director by name</td>
                 <td>/movies/directors/:Name</td>
                 <td>GET</td>
@@ -243,28 +228,6 @@
                     <br>}
                 </td>
             </tr>
-            <!-- need separate JWT to limit access to user's own account only
-                <tr>
-                <td>Get data about a specific user account</td>
-                <td>/users/:Username</td>
-                <td>GET</td>
-                <td>None</td>
-                <td>/users/davidbaddiel</td>
-                <td>JSON</td>
-                <td>
-                    {
-                    <br>"FavouriteMovies": [
-                    <br>"5fbbebaffe1b8ca810af68cc",
-                    <br>"5fbbc15efe1b8ca810af68c9"
-                    <br>],
-                    <br>"_id": "5fbcebd5fe1b8ca810af68d5",
-                    <br>"Username": "davidbaddiel",
-                    <br>"Password": "ThatsY0uThat1s",
-                    <br>"Email": "davidbaddiel@gmail.com",
-                    <br>"Birthdate": "1988-12-17T00:00:00.000Z"
-                    }
-                </td>
-            </tr> -->
             <tr>
                 <td>Allow user to update user info</td>
                 <td>users/:Username</td>

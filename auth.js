@@ -7,7 +7,9 @@ let Users = Models.User,
   JWTStrategy = passportJWT.Strategy,
   ExtractJWT = passportJWT.ExtractJwt;
 
-//basic HTTP authentication for login requests
+/**
+ * Passport strategy defining basic HTTP authentication for login requests
+ */
 passport.use(
   new LocalStrategy(
     {
@@ -39,7 +41,9 @@ passport.use(
   )
 );
 
-//JWT authentication for requests against endpoints that require authentication, token received on login
+/**
+ * Passport strategy setting up JWT authentication for all endpoints requiring bearer token with request body
+ */
 passport.use(
   new JWTStrategy(
     {
