@@ -6,7 +6,7 @@ A REST API built with Node.js and Express.js that connects with a MongoDB databa
 View the full documentation [here](https://mymusicalflix.herokuapp.com/documentation.html).
 
 ## Features
-Endpoints
+Endpoints:
   * returns a list of all movies
   * returns information about a specific movie by its title
   * returns information about a movie genre by genre name
